@@ -265,6 +265,10 @@ class VACore(JaaCore):
             return
 
         try:
+            if "*" in context:
+                self.execute_next(command, context["*"])
+                return
+
             # первый проход - ищем полное совпадение
             for keyall in context.keys():
                 keys = keyall.split("|")
